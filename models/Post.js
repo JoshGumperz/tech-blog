@@ -11,16 +11,24 @@ Post.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    title: {
+      type: DataTypes.VARCHAR(200),
+      allowNull: false
+    },
+    date: {
+      type: DataTypes.DATEONLY,
+      allowNull: false
+    },
     text: {
-        type: DataTypes.TEXT,
-        allowNull: false,
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
     user_id: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: 'user',
-            key: 'id',
-        },
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
     }
   },
   {
