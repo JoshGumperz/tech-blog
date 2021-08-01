@@ -12,7 +12,7 @@ Post.init(
       autoIncrement: true,
     },
     title: {
-      type: DataTypes.VARCHAR(200),
+      type: DataTypes.STRING,
       allowNull: false
     },
     date: {
