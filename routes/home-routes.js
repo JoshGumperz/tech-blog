@@ -41,7 +41,7 @@ router.post('/', withAuth, async (req, res) => {
     const postData = await Post.create({
     title: req.body.title,
     text: req.body.text,
-    include: [{ model: User.username }]
+    user_id: req.body.userId
   });
   res.status(200).json(postData)
 } catch (err) {
@@ -55,7 +55,7 @@ router.put('/:id', async (req, res) => {
     {
       title: req.body.title,
       text: req.body.text,
-      include: [{ model: User.username }]
+      user_id: req.body.userId
     },
     {
       where: {
