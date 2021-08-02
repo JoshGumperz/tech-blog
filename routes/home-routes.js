@@ -5,18 +5,20 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
-    const postData = await Category.findAll({
-      include: [{ model: User.username }],
+    const postData = await Post.findAll({
+      include: [{ model: User, attributes: ["username"]}],
     });
 
-    const posts = postData.map((Post) =>
-      Post.get({ plain: true })
-    );
+    res.json(postData)
 
-    res.render('homepage', {
-      posts,
-      loggedIn: req.session.loggedIn,
-    });
+    // const posts = postData.map((Post) =>
+    //   Post.get({ plain: true })
+    // );
+
+    // res.render('homepage', {
+    //   posts,
+    //   loggedIn: req.session.loggedIn,
+    // });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -36,12 +38,11 @@ router.get('/post/:id', async (req, res) => {
   }
 });
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/post', withAuth, async (req, res) => {
   try { 
     const postData = await Post.create({
     title: req.body.title,
     text: req.body.text,
-    user_id: req.body.userId
   });
   res.status(200).json(postData)
 } catch (err) {
@@ -49,13 +50,12 @@ router.post('/', withAuth, async (req, res) => {
 }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/post/:id', withAuth, async (req, res) => {
   try {
     const dish = await Post.update(
     {
       title: req.body.title,
       text: req.body.text,
-      user_id: req.body.userId
     },
     {
       where: {
@@ -68,7 +68,7 @@ router.put('/:id', async (req, res) => {
     };
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/post/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.destroy({
       where: {
