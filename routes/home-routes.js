@@ -1,26 +1,20 @@
 const router = require('express').Router();
-const { Post } = require('../models');
-// Import the custom middleware
+const { Post, User} = require('../models');
 const withAuth = require('../utils/auth');
 
-// GET all galleries for homepage
+
 router.get('/', async (req, res) => {
   try {
-    const dbPostData = await Post.findAll({
-      include: [
-        {
-          model: Painting,
-          attributes: ['filename', 'description'],
-        },
-      ],
+    const postData = await Category.findAll({
+      include: [{ model: User.username }],
     });
 
-    const galleries = dbPostData.map((Post) =>
+    const posts = postData.map((Post) =>
       Post.get({ plain: true })
     );
 
     res.render('homepage', {
-      galleries,
+      posts,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
@@ -29,48 +23,71 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET one Post
-// Use the custom middleware before allowing the user to access the Post
-router.get('/Post/:id', withAuth, async (req, res) => {
+router.get('/post/:id', async (req, res) => {
   try {
-    const dbPostData = await Post.findByPk(req.params.id, {
-      include: [
-        {
-          model: Painting,
-          attributes: [
-            'id',
-            'title',
-            'artist',
-            'exhibition_date',
-            'filename',
-            'description',
-          ],
-        },
-      ],
+    const paintingData = await Post.findByPk(req.params.id);
+
+    const post = paintingData.get({ plain: true });
+
+    res.render('post', { post, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.post('/', withAuth, async (req, res) => {
+  try { 
+    const postData = await Post.create({
+    title: req.body.title,
+    text: req.body.text,
+    include: [{ model: User.username }]
+  });
+  res.status(200).json(postData)
+} catch (err) {
+  res.status(400).json(err);
+}
+});
+
+router.put('/:id', async (req, res) => {
+  try {
+    const dish = await Post.update(
+    {
+      title: req.body.title,
+      text: req.body.text,
+      include: [{ model: User.username }]
+    },
+    {
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200).json(dish);
+  } catch (err) {
+      res.status(500).json(err);
+    };
+});
+
+router.delete('/:id', async (req, res) => {
+  try {
+    const postData = await Post.destroy({
+      where: {
+        id: req.params.id,
+      },
     });
 
-    const Post = dbPostData.get({ plain: true });
-    res.render('Post', { Post, loggedIn: req.session.loggedIn });
+    if (!postData) {
+      res.status(404).json({ message: 'No Post found with that id!' });
+      return;
+    }
+
+    res.status(200).json(postData);
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
 
-// GET one painting
-// Use the custom middleware before allowing the user to access the painting
-router.get('/painting/:id', withAuth, async (req, res) => {
-  try {
-    const dbPaintingData = await Painting.findByPk(req.params.id);
 
-    const painting = dbPaintingData.get({ plain: true });
-
-    res.render('painting', { painting, loggedIn: req.session.loggedIn });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
 
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
