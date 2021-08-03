@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User } = require('../../models');
 
 // CREATE new user
-router.post('/', async (req, res) => {
+router.post('/signup', async (req, res) => {
   try {
     const dbUserData = await User.create({
       username: req.body.username,
@@ -25,9 +25,9 @@ router.post('/', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const dbUserData = await User.findOne({
-      where: {
-        email: req.body.email,
-      },
+      where: { 
+        email: req.body.email 
+      }
     });
 
     if (!dbUserData) {

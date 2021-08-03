@@ -11,7 +11,7 @@ router.get('/:id', async (req, res) => {
 
     res.json(postData)
 
-    // const post = paintingData.get({ plain: true });
+    // const post = postData.get({ plain: true });
 
     // res.render('post', { post, loggedIn: req.session.loggedIn });
   } catch (err) {
@@ -30,7 +30,7 @@ router.post('/',
     user_id: req.session.user_id
   });
   res.status(200).json(postData)
-  } catch (err) {
+  } catch (err) { 
   res.status(400).json(err);
   }
 });
