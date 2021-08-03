@@ -1,31 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Museum</title>
-  <link rel="stylesheet" type="text/css" href="/css/jass.css">
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Test</title>
 </head>
-
 <body>
   <header>
-    <h1>Welcome to the Four Seasons Museum</h1>
-  </header>
-  <nav>
-    <a href="/">Home</a>
-    {{#if loggedIn}}
-    <button id="logout" class="btn-no-style">Logout</button>
-    {{else}}
-    <a href="/login">Login</a>
-    {{/if}}
-  </nav>
+    <div class="header-container">
+        <!-- link to top of page -->
+        <a href="#"><h1>Tech Blog</h1></a>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#">Home</a>
+                </li>
+              {{!-- <div class={{#unless loggedIn "hide"}}> --}}
+                <li>
+                    <a href="#">Login</a>
+                </li>
+              {{!-- </div>
+              {{/unless}} --}}
+              {{!-- <div class={{#unless !loggedIn "hide"}}> --}}
+                <li>
+                    <a href="#">Logout</a>
+                </li>
+              {{!-- </div>
+              {{/unless}} --}}
+            </ul>
+        </nav>
+</header>
   <main>
-    <aside>
-      <h2>Enjoy the galleries!</h2>
-    </aside>
-    <div class="gallery">
+    <div class="column post-container">
       {{{body}}}
     </div>
   </main>

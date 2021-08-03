@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+body {
+    background-color: #ffff;
+    font-family: 'Poppins', sans-serif;
+}
+/* style header section */
+header {
+    /* set z position to fixed so it sticks to the top, set z index to 1 so it layers on top of other elements if you scroll down */
+    width: 100%;
+    padding: 15px;
+    background-color: rgb(50, 92, 141);
+    height: 150px;
+}
+
+.header-container{
+    display: flex;
+    max-width: 1600px;
+    height: 100%;
+    padding-right: 40px;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+}
+
+header h1 {
+    font-family: 'Righteous', cursive;
+    font-size: 55px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: #ffff;
+}
+
+header nav li{
+    /* remove list styling so it appears as plain text, set display to inline block so elements stay inline, but padding and margin is respected */
+    list-style-type: none;
+    display: inline-block;
+}
+
+header nav li a {
+    /* set cursor to pointer to indicate it's a link when you hover over it */
+    color: #ffff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    padding: 15px;
+    cursor: pointer;
+}
+
+header nav li a:hover {
+    color: #ffff;
+}
+
+.message {
+    width: 90%;
+    margin: auto;
+    margin-top: 50px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 8px;
+}
+
+#username {
+    margin-left: 15px;
+}
+
+#post-date {
+    margin-right: 15px;
+}
+
+.post-title {
+    margin-bottom: 10px;
+}
+
+.message-body h5 {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.message-header {
+    background-color: rgb(50, 92, 141);
+}
+
+.message-body {
+    color: rgb(50, 92, 141);
+}
+
+.btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.post-btn {
+    position: fixed;
+    bottom: 30px;
+    z-index: 1;
+}
+
+.button {
+    background-color: rgb(50, 92, 141);
+    color: #ffff;
+    opacity: 0.9;
+}
+
+.new-post-container {
+    display: flex;
+    width: 100%;
+    height: 80vh;
+    align-items: center;
+    justify-content: center;
+}
+
+#submit-btn {
+    background-color: rgb(50, 92, 141);
+    color: #ffff;
+    border: none;
+}
+
+.new-post {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-post textarea {
+    margin: 10px;
+}
+
+.button:hover {
+    color: white;
+    opacity: 1;
+}
+
+.hide {
+    display: none;
+}

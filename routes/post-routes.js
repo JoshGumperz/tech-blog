@@ -9,11 +9,16 @@ router.get('/:id', async (req, res) => {
       include: [{ model: User, attributes: ["username"]}]
     });
 
-    res.json(postData)
+    // res.json(postData)
 
-    // const post = postData.get({ plain: true });
+    const formattedDate = getDateWithoutTime(postData.createdAt)
 
-    // res.render('post', { post, loggedIn: req.session.loggedIn });
+    const post = postData.map((Post) => {
+      postData.createdAt = formattedDate
+      Post.get({ plain: true })
+    });
+
+    res.render('post', { post, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
