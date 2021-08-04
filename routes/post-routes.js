@@ -35,10 +35,10 @@ withAuth,
     title: req.body.title,
     text: req.body.text,
     user_id: req.session.user_id
-  });
-  res.status(200).json(postData)
+    });
+    res.status(200).json(postData); 
   } catch (err) { 
-  res.status(400).json(err);
+  res.status(500).json(err);
   }
 });
 
