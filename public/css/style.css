@@ -143,3 +143,40 @@ header nav li a:hover {
 .hide {
     display: none;
 }
+
+.expanded-post-container {
+    width: 90%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.expanded-post {
+    position: relative;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 8px;
+    min-width: 50%;
+    min-height: 50%;
+}
+
+#expanded-post-title {
+    font-weight: bold;
+    font-size: 38px;
+    margin: 15px;
+}
+
+#expanded-post-text {
+    font-size: 20px;
+    margin: 15px;
+}
+
+#expanded-post-label {
+    position: absolute;
+    bottom: 0;
+    font-size: 18px;
+    margin: 15px;
+    color: rgb(138, 138, 138);
+}

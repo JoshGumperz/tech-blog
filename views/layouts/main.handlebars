@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="/css/style.css">
-    <title>Test</title>
+    <title>Tech Blog</title>
 </head>
 <body>
   <header>
@@ -18,24 +18,22 @@
                 <li>
                     <a href="#">Home</a>
                 </li>
-              {{!-- <div class={{#unless loggedIn "hide"}}> --}}
                 <li>
                     <a href="#">Login</a>
                 </li>
-              {{!-- </div>
-              {{/unless}} --}}
-              {{!-- <div class={{#unless !loggedIn "hide"}}> --}}
                 <li>
                     <a href="#">Logout</a>
                 </li>
-              {{!-- </div>
-              {{/unless}} --}}
-            </ul>
         </nav>
 </header>
   <main>
     <div class="column post-container">
       {{{body}}}
+    </div>
+   <div class="btn-container">
+      <div class="post-btn">
+        <button class="button" id="new-post-btn">+ New Post</button>
+      </div>
     </div>
   </main>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

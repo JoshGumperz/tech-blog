@@ -10,13 +10,7 @@ router.get('/:id', async (req, res) => {
     });
 
     // res.json(postData)
-
-    const formattedDate = getDateWithoutTime(postData.createdAt)
-
-    const post = postData.map((Post) => {
-      postData.createdAt = formattedDate
-      Post.get({ plain: true })
-    });
+    const post = postData.get(({ plain: true }));
 
     res.render('post', { post, loggedIn: req.session.loggedIn });
   } catch (err) {
