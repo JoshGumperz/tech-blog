@@ -1,10 +1,6 @@
-const homeButton = $("#home-btn")
+const loginButton = $("#login")
 const newPostButton = $("#new-post-btn")
-const posts = $("#post-title")
-
-homeButton.on("click", function(event){
-    document.location.replace("/")
-})
+const posts = $(".post-title-text")
 
 
 posts.on("click", function(event){
@@ -12,6 +8,10 @@ posts.on("click", function(event){
     console.log(postId)
     const id = postId.nextElementSibling.textContent
     document.location.replace(`/post/${id}`)
+})
+
+loginButton.on("click", function(event){
+    document.location.replace("/api/login")
 })
 
 newPostButton.on("click", function(event){

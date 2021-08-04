@@ -2,14 +2,18 @@ const router = require('express').Router();
 const { User } = require('../../models');
 
 
-router.get('/', async (req, res) => {
-  try {
-    res.render('login', { loggedIn: req.session.loggedIn });
-  } catch (err) {
+router.get('/login', (req, res) => {
+  try{
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
+    res.render('login');
+  } catch(err) {
     console.log(err);
     res.status(500).json(err);
   }
-})
+});
 
 // CREATE new user
 router.post('/signup', async (req, res) => {

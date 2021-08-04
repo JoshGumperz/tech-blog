@@ -1,10 +1,12 @@
 {{#each posts as |post|}}
 {{> display-post}}
 {{/each}}
+{{#if loggedIn}}
 <div class="btn-container">
     <div class="post-btn">
         <button class="button" id="new-post-btn">+ New Post</button>
     </div>
 </div>
+{{/if}}
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="/js/homepage.js"></script>
