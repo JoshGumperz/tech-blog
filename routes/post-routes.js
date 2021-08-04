@@ -2,6 +2,14 @@ const router = require('express').Router();
 const { Post, User} = require('../models');
 const withAuth = require('../utils/auth');
 
+router.get('/', async (req, res) => {
+  try {
+    res.render('new-post', { loggedIn: req.session.loggedIn });
+  } catch(err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+})
 
 router.get('/:id', async (req, res) => {
   try {
@@ -20,7 +28,7 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', 
-// withAuth,
+withAuth,
  async (req, res) => {
   try { 
     const postData = await Post.create({
@@ -35,7 +43,7 @@ router.post('/',
 });
 
 router.put('/:id', 
-// withAuth, 
+withAuth, 
 async (req, res) => {
   try {
     const postData = await Post.update(

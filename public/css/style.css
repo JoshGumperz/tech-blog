@@ -140,6 +140,14 @@ header nav li a:hover {
     opacity: 1;
 }
 
+#new-post-btn {
+    opacity: 1;
+}
+
+#new-post-btn:hover {
+    background-color: rgb(66, 116, 173);
+}
+
 .hide {
     display: none;
 }

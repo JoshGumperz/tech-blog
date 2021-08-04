@@ -1,45 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <title>Tech Blog</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Tech Blog</title>
 </head>
+
 <body>
   <header>
     <div class="header-container">
-        <!-- link to top of page -->
-        <a href="#"><h1>Tech Blog</h1></a>
-        <nav>
-            <ul>
-                <li>
-                    <a href="#">Home</a>
-                </li>
-                <li>
-                    <a href="#">Login</a>
-                </li>
-                <li>
-                    <a href="#">Logout</a>
-                </li>
-        </nav>
-</header>
+      <!-- link to top of page -->
+      <a href="#">
+        <h1>Tech Blog</h1>
+      </a>
+      <nav>
+        <ul>
+          <li>
+            <a id="home-btn">Home</a>
+          </li>
+          {{#if loggedIn}}
+          <li><a id="logout">Logout</a></li>
+          {{else}}
+          <li><a id="login">Login</a></li>
+          {{/if}}
+      </nav>
+  </header>
   <main>
-    <div class="column post-container">
-      {{{body}}}
-    </div>
-   <div class="btn-container">
-      <div class="post-btn">
-        <button class="button" id="new-post-btn">+ New Post</button>
-      </div>
-    </div>
+    {{{body}}}
   </main>
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  {{!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> --}}
   {{#if loggedIn}}
   <script src="/js/logout.js"></script>
   {{/if}}
   <script src="/js/script.js"></script>
 </body>
+
 </html>

@@ -1,11 +1,13 @@
-<article class="message">
-    <div class="message-header">
-        <p id="username">{{user.username}}</p>
-        <p id="post-date">{{format_date createdAt}}</p>
-    </div>
-    <div class="message-body content-body">
-        <div class="post-title">
-            <h5>{{title}}</h5>
+<div class="post-container">
+    <article class="message post-display">
+        <div class="message-header">
+            <p id="username">{{user.username}}</p>
+            <p id="post-date">{{format_date createdAt}}</p>
         </div>
-    </div>
-</article>
+        <div class="message-body content-body">
+            <div class="post-title">
+                <h5>{{title}}</h5>
+            </div>
+        </div>
+    </article>
+</div>

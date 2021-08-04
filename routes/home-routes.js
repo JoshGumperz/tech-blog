@@ -3,6 +3,7 @@ const { Post, User} = require('../models');
 
 router.get('/', async (req, res) => {
   try {
+    const hideBtn = false
     const postData = await Post.findAll({
       include: [{ model: User, attributes: ["username"]}],
     });
@@ -12,6 +13,7 @@ router.get('/', async (req, res) => {
     res.render('homepage', {
       posts,
       loggedIn: req.session.loggedIn,
+      hideBtn
     });
   } catch (err) {
     console.log(err);
@@ -20,12 +22,15 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
+  const hideBtn = true
   if (req.session.loggedIn) {
     res.redirect('/');
     return;
   }
 
-  res.render('login');
+  res.render('login', {
+    hideBtn
+  });
 });
 
 module.exports = router;
