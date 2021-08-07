@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User} = require('../models');
+const { Post, User, Reply } = require('../models');
 const withAuth = require('../utils/auth');
 
 // /post/
@@ -7,7 +7,7 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
   try {
     res.render('new-post', { loggedIn: req.session.loggedIn });
-  } catch(err) {
+  } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
@@ -16,11 +16,11 @@ router.get('/', async (req, res) => {
 // /post/editform/:id
 router.get('/editform/:id', async (req, res) => {
   try {
-    res.render('edit-post', { 
+    res.render('edit-post', {
       loggedIn: req.session.loggedIn,
       postId: req.params.id
     });
-  } catch(err) {
+  } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
@@ -34,7 +34,7 @@ router.get('/userposts', async (req, res) => {
         user_id: req.session.user_id
       },
       include: [
-        { model: User, attributes: ["username"]}
+        { model: User, attributes: ["username"] }
       ],
       order: [
         ['createdAt', 'DESC']
@@ -49,7 +49,7 @@ router.get('/userposts', async (req, res) => {
       posts,
       loggedIn: req.session.loggedIn,
     });
-  } catch(err) {
+  } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
@@ -58,20 +58,35 @@ router.get('/userposts', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     let isOwner = true
-    const checkOwner = await Post.findByPk(req.params.id) 
-    if(checkOwner.user_id !== req.session.user_id) {
+    const checkOwner = await Post.findByPk(req.params.id)
+    if (checkOwner.user_id !== req.session.user_id) {
       isOwner = false;
     }
-    console.log(isOwner)
     const postData = await Post.findByPk(req.params.id, {
-      include: [{ model: User, attributes: ["username"]}]
+      include: [
+        {
+          model: User, attributes: ["username"]
+        },
+        {
+          model: Reply,
+          attributes: [
+            'text',
+            'createdAt',
+          ],
+          include: {
+            model: User,
+            attributes: [
+              'username'
+            ]
+          }
+        }
+      ]
     });
 
-    // res.json(postData)
     const post = postData.get(({ plain: true }));
 
-    res.render('post', { 
-      post, loggedIn: req.session.loggedIn, isOwner 
+    res.render('post', {
+      post, loggedIn: req.session.loggedIn, isOwner
     });
   } catch (err) {
     console.log(err);
@@ -80,15 +95,15 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', withAuth, async (req, res) => {
-  try { 
+  try {
     const postData = await Post.create({
-    title: req.body.title,
-    text: req.body.text,
-    user_id: req.session.user_id
+      title: req.body.title,
+      text: req.body.text,
+      user_id: req.session.user_id
     });
-    res.status(200).json(postData); 
-  } catch (err) { 
-  res.status(500).json(err);
+    res.status(200).json(postData);
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 // /post/:id
@@ -101,24 +116,24 @@ router.put('/:id', withAuth, async (req, res) => {
     //   return res.status(200).json({ message: "This post does not belong to you!" });
     // }
     const postData = await Post.update(
-    {
-      title: req.body.title,
-      text: req.body.text,
-      user_id: req.session.user_id
-    },
-    {
-      where: {
-        id: req.params.id,
+      {
+        title: req.body.title,
+        text: req.body.text,
+        user_id: req.session.user_id
       },
-    });
+      {
+        where: {
+          id: req.params.id,
+        },
+      });
     if (postData[0] === 0) {
       res.status(404).json({ message: 'No post found with that id!' });
       return;
     }
     res.status(200).json(postData);
   } catch (err) {
-      res.status(500).json(err);
-    };
+    res.status(500).json(err);
+  };
 });
 // /post/:id
 router.delete('/:id', withAuth, async (req, res) => {
@@ -140,5 +155,18 @@ router.delete('/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-  
+// /post/replies/:id
+router.post('/replies/:id', withAuth, async (req, res) => {
+  try {
+    const replyData = await Reply.create({
+      text: req.body.text,
+      user_id: req.session.user_id, 
+      post_id: req.body.post_id
+    });
+    res.status(200).json(replyData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

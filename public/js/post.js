@@ -1,10 +1,8 @@
-const homeButton = $("#home-btn")
 const editButton = $(".edit-btn")
 const deleteButton = $(".delete-btn")
+const viewReplies = $(".view-replies-btn")
+const displayReplies = $(".reply-container")
 
-homeButton.on("click", function(event){
-    document.location.replace("/")
-})
 
 editButton.on("click", function(){
     const id = $(this).closest('div').attr('id')
@@ -24,3 +22,12 @@ deleteButton.on("click", async function(){
     }
 })
 
+viewReplies.on("click", function() { 
+    displayReplies.css("display", "initial")
+})
+
+function init() {
+    displayReplies.css("display", "none")
+}
+
+init()

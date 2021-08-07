@@ -11,9 +11,8 @@ body {
     background-color: #ffff;
     font-family: 'Poppins', sans-serif;
 }
-/* style header section */
+
 header {
-    /* set z position to fixed so it sticks to the top, set z index to 1 so it layers on top of other elements if you scroll down */
     width: 100%;
     padding: 15px;
     background-color: rgb(50, 92, 141);
@@ -39,13 +38,11 @@ header h1 {
 }
 
 header nav li{
-    /* remove list styling so it appears as plain text, set display to inline block so elements stay inline, but padding and margin is respected */
     list-style-type: none;
     display: inline-block;
 }
 
 header nav li a {
-    /* set cursor to pointer to indicate it's a link when you hover over it */
     color: #ffff;
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
@@ -89,6 +86,10 @@ header nav li a:hover {
 
 .message-body {
     color: rgb(50, 92, 141);
+}
+
+.reply-container {
+    width: 50%;
 }
 
 .btn-container {
@@ -136,11 +137,6 @@ header nav li a:hover {
     margin: 10px;
 }
 
-.button:hover {
-    color: white;
-    opacity: 1;
-}
-
 #new-post-btn {
     opacity: 1;
 }
@@ -165,6 +161,7 @@ header nav li a:hover {
 
 .expanded-post {
     position: relative;
+    margin: 5px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 8px;
     min-width: 50%;
@@ -192,11 +189,6 @@ header nav li a:hover {
 
 .modify-buttons {
     width: 50%;
-    position: relative;
-}
-
-.edit-btn, .delete-btn, .replies-btn {
-    margin-top: 5px;
 }
 
 .delete-btn {

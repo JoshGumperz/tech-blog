@@ -1,0 +1,27 @@
+[
+    {
+        "text": "Reply Text 1",
+        "user_id": 2,
+        "post_id": 1
+    },
+    {
+        "text": "Reply Text 2",
+        "user_id": 3,
+        "post_id": 2
+    },
+    {
+        "text": "Reply Text 3",
+        "user_id": 1,
+        "post_id": 3
+    },
+    {
+        "text": "Reply Text 4",
+        "user_id": 2,
+        "post_id": 4
+    },
+    {
+        "text": "Reply Text 5",
+        "user_id": 1,
+        "post_id": 3
+    }
+]
