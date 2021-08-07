@@ -46,7 +46,7 @@ const editPostFormHandler = async (event) => {
         if (response.ok) {
             document.location.replace('/');
         } else {
-            alert('Failed to Post.');
+            alert('Failed to edit post.');
         }
     }
 }

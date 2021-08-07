@@ -59,10 +59,7 @@ router.get('/:id', async (req, res) => {
   try {
     let isOwner = true
     const checkOwner = await Post.findByPk(req.params.id) 
-    console.log("CHECK OWNER WHOLE POST-----", checkOwner)
-    console.log("CHECK OWNER USER ID-----", checkOwner.user_id)
     if(checkOwner.user_id !== req.session.user_id) {
-      console.log("not owner")
       isOwner = false;
     }
     console.log(isOwner)
@@ -94,7 +91,7 @@ router.post('/', withAuth, async (req, res) => {
   res.status(500).json(err);
   }
 });
-
+// /post/:id
 router.put('/:id', withAuth, async (req, res) => {
   try {
     // let isOwner = true
@@ -123,9 +120,10 @@ router.put('/:id', withAuth, async (req, res) => {
       res.status(500).json(err);
     };
 });
-
+// /post/:id
 router.delete('/:id', withAuth, async (req, res) => {
   try {
+    console.log(req.params.id)
     const postData = await Post.destroy({
       where: {
         id: req.params.id,

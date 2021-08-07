@@ -4,9 +4,15 @@
         <p id="expanded-post-text">{{post.text}}</p>
         <p id="expanded-post-label">posted by {{post.user.username}} on {{format_date post.createdAt}}</p>
     </article>
-    {{#if isOwner}}
-    <button class="button edit-btn">Edit</button>
-    {{/if}}
+    <section class="modify-buttons">
+        <button class="button replies-btn">View Replies</button>
+        {{#if isOwner}}
+        <button class="button edit-btn">Edit Post</button>
+        {{/if}}
+        {{#if isOwner}}
+        <button class="button delete-btn">Delete Post</button>
+        {{/if}}
+    </section>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="/js/post.js"></script>
