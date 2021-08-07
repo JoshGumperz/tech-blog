@@ -1,7 +1,17 @@
 const loginButton = $("#login")
 const newPostButton = $("#new-post-btn")
 const posts = $(".post-title-text")
+const yourPosts = $("#your-posts-btn")
+const homeButton = $("#home-btn")
 
+homeButton.on("click", function(event){
+    document.location.replace("/")
+})
+
+
+yourPosts.on("click", function(){
+    document.location.replace("/post/userposts")
+})
 
 posts.on("click", function(event){
     const postId = event.target
