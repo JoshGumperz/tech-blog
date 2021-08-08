@@ -85,8 +85,13 @@ router.get('/:id', async (req, res) => {
 
     const post = postData.get(({ plain: true }));
 
+    let hasReplies = false
+    if(post.replies[0]) {
+      hasReplies = true
+    } 
+    console.log(hasReplies)
     res.render('post', {
-      post, loggedIn: req.session.loggedIn, isOwner
+      post, loggedIn: req.session.loggedIn, isOwner, hasReplies
     });
   } catch (err) {
     console.log(err);

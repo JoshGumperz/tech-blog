@@ -14,11 +14,21 @@
         <button class="button delete-btn">Delete Post</button>
         {{/if}}
     </section>
-    <div class="column reply-container">
+    <section class="column reply-container">
+        {{#if hasReplies}}
         {{#each post.replies as |reply|}}
         {{> replies}}
         {{/each}}
-    </div>
+        {{else}}
+        <p id="no-replies">This Post Has No Replies.</p>
+        {{/if}}
+    </section>
+    <section class="new-reply-container">
+        <form class="new-reply">
+            <textarea class="textarea" placeholder="Add Reply" rows="3" required></textarea>
+            <button class="button"><input id="submit-btn" type="submit" value="Submit"></button>
+        </form>
+    </section>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="/js/homepage.js"></script>
