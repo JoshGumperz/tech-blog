@@ -1,10 +1,10 @@
-<div id="{{post.id}}" class="expanded-post-container">
+<section id="{{post.id}}" class="expanded-post-container">
     <article class="expanded-post">
         <h1 id="expanded-post-title">{{post.title}}</h1>
         <p id="expanded-post-text">{{post.text}}</p>
         <p id="expanded-post-label">posted by {{post.user.username}} on {{format_date post.createdAt}}</p>
     </article>
-    <section class="modify-buttons">
+    <div class="modify-buttons">
         <button class="button add-reply-btn">Add Reply</button>
         <button class="button view-replies-btn">View Replies</button>
         {{#if isOwner}}
@@ -13,8 +13,8 @@
         {{#if isOwner}}
         <button class="button delete-btn">Delete Post</button>
         {{/if}}
-    </section>
-    <section class="column reply-container">
+    </div>
+    <div class="column reply-container">
         {{#if hasReplies}}
         {{#each post.replies as |reply|}}
         {{> replies}}
@@ -22,13 +22,13 @@
         {{else}}
         <p id="no-replies">This Post Has No Replies.</p>
         {{/if}}
-    </section>
-    <section class="new-reply-container">
+    </div>
+    <div class="new-reply-container">
         <form class="new-reply">
-            <textarea class="textarea" placeholder="Add Reply" rows="3" required></textarea>
-            <button class="button"><input id="submit-btn" type="submit" value="Submit"></button>
+            <textarea class="textarea add-reply-text" placeholder="Add Reply" rows="3" required></textarea>
+            <button class="button"><input id="submit-reply-btn" type="submit" value="Submit"></button>
         </form>
-    </section>
+    </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="/js/homepage.js"></script>

@@ -160,13 +160,13 @@ router.delete('/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-// /post/replies/:id
-router.post('/replies/:id', withAuth, async (req, res) => {
+// /post/replies/
+router.post('/replies', withAuth, async (req, res) => {
   try {
     const replyData = await Reply.create({
       text: req.body.text,
       user_id: req.session.user_id, 
-      post_id: req.body.post_id
+      post_id: req.body.postId
     });
     res.status(200).json(replyData);
   } catch (err) {
