@@ -78,9 +78,9 @@ router.get('/:id', async (req, res) => {
             attributes: [
               'username'
             ]
-          }
+          },
         }
-      ]
+      ],
     });
 
     const post = postData.get(({ plain: true }));

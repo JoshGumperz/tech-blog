@@ -1,6 +1,6 @@
 const homeButton = $("#home-btn")
-const newPost = $(".new-post")
-const submitButton = $("#submit-edit-btn")
+const submitPostButton = $(".submit-post-btn")
+const submitEditButton = $(".submit-edit-btn")
 
 homeButton.on("click", function(event){
     document.location.replace("/")
@@ -28,8 +28,8 @@ const newPostFormHandler = async (event) => {
     }
 }
 
-newPost.on("submit", newPostFormHandler)
-submitButton.on("click", async function(){
+submitPostButton.on("click", newPostFormHandler)
+submitEditButton.on("click", async function(){
     const title = $("#new-post-title").val()
     const text = $("#new-post-text").val()
     const id = $(this).closest('section').attr('id')

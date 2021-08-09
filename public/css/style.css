@@ -114,12 +114,6 @@ header nav li a:hover {
     justify-content: center;
 }
 
-#submit-btn, #submit-edit-btn, #submit-reply-btn {
-    background-color: rgb(50, 92, 141);
-    color: #ffff;
-    border: none;
-}
-
 .new-post, .new-reply, .edit-post {
     display: flex;
     flex-direction: column;
@@ -175,8 +169,8 @@ header nav li a:hover {
     justify-content: flex-end;
 }
 
-.expanded-post, .reply-display {
-    min-width: 50%;
+.expanded-post, .reply-display, .modify-buttons {
+    min-width: 60%;
 }
 
 .expanded-post, .reply-message {
@@ -207,10 +201,6 @@ header nav li a:hover {
     font-size: 18px;
     margin: 15px;
     color: rgb(138, 138, 138);
-}
-
-.modify-buttons {
-    width: 50%;
 }
 
 .delete-btn {

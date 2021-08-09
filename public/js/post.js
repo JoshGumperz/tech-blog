@@ -4,7 +4,7 @@ const viewReplies = $(".view-replies-btn")
 const displayReplies = $(".reply-container")
 const addReplies = $(".add-reply-btn")
 const addRepliesInput = $(".new-reply-container")
-const submitButton = $("#submit-reply-btn")
+const submitReplyButton = $(".submit-reply-btn")
 
 
 editButton.on("click", function(){
@@ -41,7 +41,7 @@ function init() {
     addRepliesInput.css("display", "none")
 }
 
-submitButton.on("click", async function(){
+submitReplyButton.on("click", async function(){
     const text = $(".add-reply-text").val()
     const postId = $(this).closest('section').attr('id')
     console.log(text)
