@@ -40,10 +40,8 @@ router.get('/userposts', async (req, res) => {
         ['createdAt', 'DESC']
       ]
     });
-    console.log(postData)
 
     const posts = postData.map((blogPost) => blogPost.get({ plain: true }));
-    console.log(posts)
 
     res.render('homepage', {
       posts,

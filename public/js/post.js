@@ -4,7 +4,7 @@ const viewReplies = $(".view-replies-btn")
 const displayReplies = $(".reply-container")
 const addReplies = $(".add-reply-btn")
 const addRepliesInput = $(".new-reply-container")
-const submitReplyButton = $(".submit-reply-btn")
+const submitReplyButton = $("#submit-reply-btn")
 
 
 editButton.on("click", function(){
@@ -20,9 +20,22 @@ deleteButton.on("click", async function(){
         method: 'DELETE',
     })
     if (response.ok) {
+        await Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Post deleted',
+            showConfirmButton: false,
+            timer: 1500
+        })
         document.location.replace('/');
     } else {
-        alert('Failed to delete post.')
+        await Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Failed to delete post',
+            showConfirmButton: false,
+            timer: 1500
+        })
     }
 })
 
@@ -41,7 +54,8 @@ function init() {
     addRepliesInput.css("display", "none")
 }
 
-submitReplyButton.on("click", async function(){
+submitReplyButton.on("click", async function(event){
+    event.preventDefault();
     const text = $(".add-reply-text").val()
     const postId = $(this).closest('section').attr('id')
     console.log(text)
@@ -54,9 +68,22 @@ submitReplyButton.on("click", async function(){
             headers: { 'Content-Type': 'application/json' }
         });
         if (response.ok) {
+            await Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Reply added',
+                showConfirmButton: false,
+                timer: 1500
+            })  
             document.location.replace(`/post/${postId}`);
         } else {
-            alert('Failed to add reply.');
+            await Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Error adding reply',
+                showConfirmButton: false,
+                timer: 1500
+            });
         }
     }
 })

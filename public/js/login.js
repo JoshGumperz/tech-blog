@@ -12,9 +12,22 @@ const loginFormHandler = async (event) => {
       });
   
       if (response.ok) {
+        await Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Logging in',
+          showConfirmButton: false,
+          timer: 1500
+        })
         document.location.replace('/');
       } else {
-        alert('Failed to log in.');
+        await Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Incorrect Username or Password',
+          showConfirmButton: true,
+          timer: 1500
+      })
       }
     }
   };
@@ -34,9 +47,22 @@ const loginFormHandler = async (event) => {
       });
   
       if (response.ok) {
+        await Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Account created',
+          showConfirmButton: false,
+          timer: 1500
+        })
         document.location.replace('/');
       } else {
-        alert('Failed to sign up.');
+        await Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'User already exists',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
     }
   };

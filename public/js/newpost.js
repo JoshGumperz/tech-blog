@@ -1,8 +1,8 @@
 const homeButton = $("#home-btn")
-const submitPostButton = $(".submit-post-btn")
-const submitEditButton = $(".submit-edit-btn")
+const submitPostButton = $("#submit-post-btn")
+const submitEditButton = $("#submit-edit-btn")
 
-homeButton.on("click", function(event){
+homeButton.on("click", function (event) {
     document.location.replace("/")
 })
 
@@ -11,38 +11,63 @@ const newPostFormHandler = async (event) => {
 
     const title = $("#new-post-title").val()
     const text = $("#new-post-text").val()
-    console.log(title)
-    console.log(text)
 
-    if(title && text) {
+    if (title && text) {
         const response = await fetch('/post', {
             method: 'POST',
             body: JSON.stringify({ title, text }),
             headers: { 'Content-Type': 'application/json' }
         });
         if (response.ok) {
+            await Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Post added',
+                showConfirmButton: false,
+                timer: 1500
+            })
             document.location.replace('/');
         } else {
-            alert('Failed to Post.');
+            await Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Failed to post',
+                showConfirmButton: false,
+                timer: 1500
+            })
         }
     }
 }
 
 submitPostButton.on("click", newPostFormHandler)
-submitEditButton.on("click", async function(){
+submitEditButton.on("click", async function(event) {
+    event.preventDefault();
     const title = $("#new-post-title").val()
     const text = $("#new-post-text").val()
     const id = $(this).closest('section').attr('id')
-    if(title && text) {
+    if (title && text) {
         const response = await fetch(`/post/${id}`, {
             method: 'PUT',
             body: JSON.stringify({ title, text }),
             headers: { 'Content-Type': 'application/json' }
         });
         if (response.ok) {
+            await Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Post edited',
+                showConfirmButton: false,
+                timer: 1500
+            })
             document.location.replace('/');
         } else {
-            alert('Failed to edit post.');
+            await Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Failed to edit post',
+                showConfirmButton: false,
+                timer: 1500
+            })
         }
     }
 })
