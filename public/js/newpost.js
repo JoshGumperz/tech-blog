@@ -32,11 +32,7 @@ newPost.on("submit", newPostFormHandler)
 submitButton.on("click", async function(){
     const title = $("#new-post-title").val()
     const text = $("#new-post-text").val()
-    console.log(title)
-    console.log(text)
     const id = $(this).closest('section').attr('id')
-    console.log(id)
-
     if(title && text) {
         const response = await fetch(`/post/${id}`, {
             method: 'PUT',

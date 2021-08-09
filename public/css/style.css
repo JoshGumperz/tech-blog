@@ -54,7 +54,7 @@ header nav li a:hover {
     color: #ffff;
 }
 
-.message {
+.post-display {
     width: 90%;
     margin: auto;
     margin-top: 50px;
@@ -86,10 +86,6 @@ header nav li a:hover {
 
 .message-body {
     color: rgb(50, 92, 141);
-}
-
-.reply-container {
-    width: 50%;
 }
 
 .btn-container {
@@ -161,23 +157,37 @@ header nav li a:hover {
     display: none;
 }
 
-.expanded-post-container {
+.expanded-post-container, .reply-container {
     width: 90%;
-    height: 80vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     margin: auto;
 }
 
-.expanded-post {
-    position: relative;
+.reply-container {
+    min-height: 100vh;
+    justify-content: flex-start;
+}
+
+.expanded-post-container {
+    height: 75vh;
+    justify-content: flex-end;
+}
+
+.expanded-post, .reply-display {
+    min-width: 50%;
+}
+
+.expanded-post, .reply-message {
     margin: 5px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 8px;
-    min-width: 50%;
-    min-height: 50%;
+}
+
+.expanded-post {
+    position: relative;
+    min-height: 70%;
 }
 
 #expanded-post-title {

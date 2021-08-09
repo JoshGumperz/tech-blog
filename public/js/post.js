@@ -28,7 +28,7 @@ deleteButton.on("click", async function(){
 
 viewReplies.on("click", function() { 
     addRepliesInput.css("display", "none")
-    displayReplies.css("display", "initial")
+    displayReplies.css("display", "flex")
 })
 
 addReplies.on("click", function(){
