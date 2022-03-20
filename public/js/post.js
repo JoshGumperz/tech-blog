@@ -5,6 +5,8 @@ const displayReplies = $(".reply-container")
 const addReplies = $(".add-reply-btn")
 const addRepliesInput = $(".new-reply-container")
 const submitReplyButton = $("#submit-reply-btn")
+let viewRepliesPressed = false
+let addReplyPressed = false
 
 
 editButton.on("click", function(){
@@ -39,14 +41,31 @@ deleteButton.on("click", async function(){
     }
 })
 
-viewReplies.on("click", function() { 
-    addRepliesInput.css("display", "none")
-    displayReplies.css("display", "flex")
+viewReplies.on("click", function() {
+    viewRepliesPressed = !viewRepliesPressed
+    if(viewRepliesPressed) {
+        addRepliesInput.css("display", "none")
+        displayReplies.css("display", "flex")
+        viewReplies.text("Hide Replies")
+    } else {
+        addRepliesInput.css("display", "none")
+        displayReplies.css("display", "none")
+        viewReplies.text("View Replies")  
+    }
+
 })
 
 addReplies.on("click", function(){
-    displayReplies.css("display", "none")
-    addRepliesInput.css("display", "flex")
+    addReplyPressed = !addReplyPressed
+    if(addReplyPressed) {
+        displayReplies.css("display", "none")
+        addRepliesInput.css("display", "flex")
+        addReplies.text("Cancel")
+    } else {
+        addRepliesInput.css("display", "none")
+        displayReplies.css("display", "none")
+        addReplies.text("Reply")  
+    }
 })
 
 function init() {

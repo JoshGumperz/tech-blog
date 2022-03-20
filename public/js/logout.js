@@ -1,3 +1,5 @@
+const logoutButton = $(".logout-btn")
+
 const logout = async () => {
     const response = await fetch('/api/logout', {
       method: 'POST',
@@ -9,7 +11,6 @@ const logout = async () => {
     } else {
       alert('Failed to log out.');
     }
-  };
+};
   
-  document.querySelector('#logout').addEventListener('click', logout);
-  
+logoutButton.on("click", logout)

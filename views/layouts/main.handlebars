@@ -1,39 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html id="top" lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   <title>Tech Blog</title>
 </head>
 
 <body>
   <header>
-    <div class="header-container">
-      <!-- link to top of page -->
-      <a href="#">
+    <a href="#top">
         <h1>Tech Blog</h1>
-      </a>
-      <nav>
-        <ul>
-          <li>
-            <a id="home-btn">Home</a>
-          </li>
-          {{#if loggedIn}}
-          <li><a id="your-posts-btn">Your Posts</a></li>
-          <li><a id="logout">Logout</a></li>
-          {{else}}
-          <li><a id="login">Login</a></li>
-          {{/if}}
-      </nav>
+    </a>
+    <nav class="header-container">
+      <!-- link to top of page -->
+      <div class="mobile-icon-container">
+        <span class="material-icons-outlined mobile-icon">menu</span>
+      </div>
+      <ul class="nav-list">
+        <li>
+          <a href="/">Home</a>
+        </li>
+        {{#if loggedIn}}
+        <li><a class="your-posts-btn">Your Posts</a></li>
+        <li><a class="logout-btn">Logout</a></li>
+        {{else}}
+        <li><a class="login-btn">Login</a></li>
+        {{/if}}
+      </ul>
+    </nav>
   </header>
+  <aside id="sidebar" class="sidebar-hidden">
+      <div class='sidebar-icon-container'>
+          <span class="material-icons-outlined sidebar-close-icon">close</span>
+      </div>
+      <nav class='sidebar-menu'>
+          <ul class='sidebar-list'>
+              <a href="/" class="sidebar-link">Home</a>
+            {{#if loggedIn}}
+              <a class="sidebar-link your-posts-btn">Your Posts</a>
+            {{/if}}
+            {{#if loggedIn}}
+              <a class="sidebar-link logout-btn">Logout</a>
+            {{else}}
+              <a class="sidebar-link login-btn">Login</a>
+            {{/if}}
+          </ul>
+      </nav>
+  </aside>
   <main>
   {{{body}}}
   </main>
   
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="/js/homepage.js"></script>
+
   {{#if loggedIn}}
   <script src="/js/logout.js"></script>
   {{/if}}

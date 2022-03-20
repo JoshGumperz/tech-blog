@@ -1,12 +1,23 @@
-const loginButton = $("#login")
+const loginButton = $(".login-btn")
 const newPostButton = $("#new-post-btn")
 const posts = $(".post-title-text")
-const yourPosts = $("#your-posts-btn")
-const homeButton = $("#home-btn")
+const yourPosts = $(".your-posts-btn")
+// const homeButton = $("#home-btn")
 
-homeButton.on("click", function(event){
-    document.location.replace("/")
-})
+// toggle sidebar on and off
+const sidebar = $("#sidebar")
+const toggleSidebarOff = () => {
+  sidebar.removeClass("sidebar").addClass("sidebar-hidden")
+}
+const toggleSidebarOn = () => {
+  sidebar.removeClass("sidebar-hidden").addClass("sidebar")
+}
+$(".mobile-icon").click(toggleSidebarOn)
+sidebar.click(toggleSidebarOff)
+
+// homeButton.on("click", function(event){
+//     document.location.replace("/")
+// })
 
 
 yourPosts.on("click", function(){
