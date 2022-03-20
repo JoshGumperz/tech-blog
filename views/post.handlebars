@@ -7,7 +7,9 @@
         <span class="expanded-post-label-container"><p id="expanded-post-label">posted by {{post.user.username}} on {{format_date post.createdAt}}</p></span>
     </div>
     <div class="modify-buttons">
+        {{#if loggedIn}}
         <button class="button add-reply-btn">Reply</button>
+        {{/if}}
         <button class="button view-replies-btn">View Replies</button>
         {{#if isOwner}}
         <button class="button edit-btn">Edit Post</button>
