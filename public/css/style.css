@@ -279,17 +279,12 @@ transition: 0.2s ease-in-out;
     display: none;
 }
 
-.expanded-post-container, .reply-container {
+.expanded-post-container {
     width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: auto;
-}
-
-.reply-container {
-    min-height: 10vh;
-    justify-content: flex-start;
 }
 
 .expanded-post-container {
@@ -303,6 +298,10 @@ transition: 0.2s ease-in-out;
     width: 60%;
     white-space: normal;
     word-wrap: break-word;
+}
+
+.reply-display {
+    margin-top: 15px;
 }
 
 .expanded-post, .reply-message {

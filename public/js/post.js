@@ -1,7 +1,7 @@
 const editButton = $(".edit-btn")
 const deleteButton = $(".delete-btn")
 const viewReplies = $(".view-replies-btn")
-const displayReplies = $(".reply-container")
+const displayReplies = $(".reply-display")
 const addReplies = $(".add-reply-btn")
 const addRepliesInput = $(".new-reply-container")
 const submitReplyButton = $("#submit-reply-btn")
@@ -45,7 +45,7 @@ viewReplies.on("click", function() {
     viewRepliesPressed = !viewRepliesPressed
     if(viewRepliesPressed) {
         addRepliesInput.css("display", "none")
-        displayReplies.css("display", "flex")
+        displayReplies.css("display", "block")
         viewReplies.text("Hide Replies")
     } else {
         addRepliesInput.css("display", "none")
