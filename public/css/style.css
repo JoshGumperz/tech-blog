@@ -293,8 +293,10 @@ transition: 0.2s ease-in-out;
 }
 
 .expanded-post-container {
-    min-height: 75vh;
-    justify-content: flex-end;
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
 }
 
 .expanded-post, .reply-display, .modify-buttons {
