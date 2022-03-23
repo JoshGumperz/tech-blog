@@ -80,26 +80,38 @@ font-size: 2.5rem;
 .sidebar {
 position: fixed;
 z-index: 999;
-width: 100%;
+width: 40%;
 height: 100%;
-background: #0d0d0d;
+background: #ffff;
 display: flex;
 align-items: center;
 justify-content: center;
 top: 0;
-left: 0;
+right: 0;
+bottom: 0;
 transition: 0.3s ease-in-out;
 }
 
+.sidebar-overlay {
+    position: fixed;
+    z-index: 998;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.39);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: 0.3s ease-in-out;
+}
+
 .sidebar-hidden {
-display: none;
-top: -100%;
-transition: 0.3s ease-in-out;
+    display: none;
 }
 
 .sidebar-icon-container {
 position: absolute;
-background: #0d0d0d;
+background: #ffff;
 top: 1.2rem;
 right: 1.5rem;
 background: transparent;
@@ -109,13 +121,13 @@ outline: none;
 }
 
 .sidebar-close-icon {
-color: #fff;
-background: #0d0d0d;
+color: rgb(50, 92, 141);
+background: #ffff;
 }
 
 .sidebar-menu {
 display: flex;
-background: #0d0d0d;
+background: #ffff;
 align-items: center;
 justify-content: center;
 width: 100%;
@@ -138,14 +150,14 @@ margin-bottom: 2em;
 text-decoration: none;
 list-style: none;
 transition: 0.2s ease-in-out;
-background: #0d0d0d;
-color: #fff;
+background: #ffff;
+color: rgb(50, 92, 141);
 cursor: pointer;
 text-decoration: none;
 }
 
 .sidebar-link:hover, .sidebar-close-icon:hover {
-color: rgb(50, 92, 141);
+color: rgb(94, 155, 226);
 transition: 0.2s ease-in-out;
 }
 
@@ -403,5 +415,9 @@ transition: 0.2s ease-in-out;
 @media screen and (max-width: 300px) {
     .mobile-icon-container {
         right: -35px;
+    }
+
+    .sidebar {
+        width: 50%;
     }
 }
