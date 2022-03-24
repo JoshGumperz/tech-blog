@@ -4,22 +4,18 @@ const posts = $(".post-title-text")
 const yourPosts = $(".your-posts-btn")
 // toggle sidebar on and off
 const sidebar = $("#sidebar")
-const overlay =  $("#sidebar-overlay")
+const overlay = $("#sidebar-overlay")
 const toggleSidebarOff = () => {
-  sidebar.removeClass("sidebar").addClass("sidebar-hidden")
-  overlay.removeClass("sidebar-overlay").addClass("sidebar-hidden")
+  sidebar.removeClass("sidebar-visible").addClass("sidebar-hidden").css("transition", "0.3s ease-in-out")
+  overlay.css("display", "none")
 }
 const toggleSidebarOn = () => {
-  sidebar.removeClass("sidebar-hidden").addClass("sidebar")
-  overlay.removeClass("sidebar-hidden").addClass("sidebar-overlay")
+  sidebar.removeClass("sidebar-hidden").addClass("sidebar-visible").css("transition", "0.3s ease-in-out")
+  overlay.css("display", "block")
 }
 $(".mobile-icon").click(toggleSidebarOn)
-overlay.click(toggleSidebarOff)
 sidebar.click(toggleSidebarOff)
-
-// homeButton.on("click", function(event){
-//     document.location.replace("/")
-// })
+overlay.click(toggleSidebarOff)
 
 
 yourPosts.on("click", function(){
