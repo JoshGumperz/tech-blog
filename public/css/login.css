@@ -62,6 +62,10 @@ button:hover {
   display: table;
 }
 
+.space-creator {
+  visibility: hidden;
+}
+
 @media screen and (max-width: 1350px) {
   .login-form, .signup-form {
     width: 45%;
