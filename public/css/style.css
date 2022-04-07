@@ -125,11 +125,6 @@ font-size: 2.5rem;
     outline: none;
 }
 
-.sidebar-close-icon {
-    color: rgb(50, 92, 141);
-    background: #ffff;
-}
-
 .sidebar-menu {
     display: flex;
     background: #ffff;
@@ -153,17 +148,19 @@ font-size: 2.5rem;
     font-size: 1.5rem;
     margin-bottom: 2em;
     text-decoration: none;
-    list-style: none;
-    transition: 0.2s ease-in-out;
-    background: #ffff;
-    color: rgb(50, 92, 141);
-    cursor: pointer;
+    list-style: none;    
     text-decoration: none;
 }
 
-.sidebar-link:hover, .sidebar-close-icon:hover {
-    color: rgb(94, 155, 226);
+.sidebar-btn {
+    color: rgb(50, 92, 141);
+    background: #ffff;
+    cursor: pointer;
     transition: 0.2s ease-in-out;
+}
+
+.sidebar-btn:hover {
+    color: rgb(94, 155, 226);
 }
 
 .post-container {

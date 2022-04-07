@@ -37,18 +37,18 @@
   </header>
   <aside id="sidebar" class="sidebar sidebar-hidden">
       <div class='sidebar-icon-container'>
-          <span class="material-icons-outlined sidebar-close-icon">close</span>
+          <span class="material-icons-outlined sidebar-close-icon sidebar-btn">close</span>
       </div>
       <nav class='sidebar-menu'>
           <ul class='sidebar-list'>
-              <a href="/" class="sidebar-link">Home</a>
+              <a href="/" class="sidebar-link sidebar-btn">Home</a>
             {{#if loggedIn}}
-              <a class="sidebar-link your-posts-btn">Your Posts</a>
+              <a class="sidebar-link your-posts-btn sidebar-btn">Your Posts</a>
             {{/if}}
             {{#if loggedIn}}
-              <a class="sidebar-link logout-btn">Logout</a>
+              <a class="sidebar-link logout-btn sidebar-btn">Logout</a>
             {{else}}
-              <a class="sidebar-link login-btn">Login</a>
+              <a class="sidebar-link login-btn sidebar-btn">Login</a>
             {{/if}}
           </ul>
       </nav>
