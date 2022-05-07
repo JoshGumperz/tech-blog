@@ -28,6 +28,7 @@
         </li>
         {{#if loggedIn}}
         <li><a class="your-posts-btn">Your Posts</a></li>
+        <li><a class="delete-account-btn">Delete Account</a></li>
         <li><a class="logout-btn">Logout</a></li>
         {{else}}
         <li><a class="login-btn">Login</a></li>
@@ -41,14 +42,17 @@
       </div>
       <nav class='sidebar-menu'>
           <ul class='sidebar-list'>
-              <a href="/" class="sidebar-link sidebar-btn">Home</a>
+              <li class="sidebar-item"><a href="/" class="sidebar-link sidebar-btn">Home</a></li>
             {{#if loggedIn}}
-              <a class="sidebar-link your-posts-btn sidebar-btn">Your Posts</a>
+              <li class="sidebar-item your-posts-btn"><a class="sidebar-link sidebar-btn">Your Posts</a></li>
             {{/if}}
             {{#if loggedIn}}
-              <a class="sidebar-link logout-btn sidebar-btn">Logout</a>
+              <li class="sidebar-item delete-account-btn"><a class="sidebar-link sidebar-btn">Delete Account</a></li>
+            {{/if}}
+            {{#if loggedIn}}
+              <li class="sidebar-item logout-btn"><a class="sidebar-link sidebar-btn">Logout</a></li>
             {{else}}
-              <a class="sidebar-link login-btn sidebar-btn">Login</a>
+              <li class="sidebar-item login-btn"><a class="sidebar-link sidebar-btn">Login</a></li>
             {{/if}}
           </ul>
       </nav>

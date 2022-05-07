@@ -38,3 +38,4 @@ newPostButton.on("click", function(event){
     console.log(event)
     document.location.replace("/post")
 })
+

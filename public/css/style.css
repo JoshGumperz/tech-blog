@@ -139,12 +139,19 @@ font-size: 2.5rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
-.sidebar-link {
+.sidebar-item {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 80px;
+}
+
+.sidebar-link {
     font-size: 1.5rem;
     margin-bottom: 2em;
     text-decoration: none;
@@ -364,6 +371,18 @@ font-size: 2.5rem;
 }
 
 @media screen and (max-width: 1000px) {
+    .mobile-icon-container {
+        display: block;
+        position: absolute;
+        top: 28px;
+        right: 0;
+        transform: translate(-100%, 60%);
+        cursor: pointer;
+    }
+
+    .nav-list {
+        display: none;
+    }
 
    .modify-buttons {
        display: flex;
@@ -379,14 +398,6 @@ font-size: 2.5rem;
 }
 
 @media screen and (max-width: 768px) {
-    .mobile-icon-container {
-        display: block;
-        position: absolute;
-        top: 28px;
-        right: 0;
-        transform: translate(-100%, 60%);
-        cursor: pointer;
-    }
 
     .new-post {
         width: 90%;
@@ -396,9 +407,6 @@ font-size: 2.5rem;
         width: 100%;
     }
 
-    .nav-list {
-        display: none;
-    }
 }
 
 @media screen and (max-width: 500px) {
@@ -421,5 +429,15 @@ font-size: 2.5rem;
 
     .sidebar {
         width: 50%;
+    }
+
+    .sidebar-item {
+        justify-content: flex-start;
+    }
+
+    .sidebar-link {
+        font-size: 0.8rem;
+        max-width: 100%;
+        margin-left: 10px;
     }
 }

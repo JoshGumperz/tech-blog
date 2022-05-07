@@ -82,4 +82,23 @@ router.post('/logout', (req, res) => {
   }
 });
 
+router.delete('/user', async (req, res) => {
+  try {
+    const postData = await User.destroy({
+      where: {
+        id: req.session.user_id,
+      },
+    });
+
+    if (!postData) {
+      res.status(404).json({ message: 'No user found with that id!' });
+      return;
+    }
+
+    res.status(200).json(postData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

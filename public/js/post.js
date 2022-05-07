@@ -8,7 +8,6 @@ const submitReplyButton = $("#submit-reply-btn")
 let viewRepliesPressed = false
 let addReplyPressed = false
 
-
 editButton.on("click", function(){
     const id = $(this).closest('section').attr('id')
     console.log(id)
@@ -16,6 +15,18 @@ editButton.on("click", function(){
 })
 
 deleteButton.on("click", async function(){
+    const result = await Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'Are you sure you want to delete this post?',
+        showConfirmButton: true,
+        showCancelButton: true
+    })
+
+    if(result.isDismissed) {
+       return
+    }
+
     const id = $(this).closest('section').attr('id')
     console.log(id)
     const response = await fetch(`/post/${id}`, {
