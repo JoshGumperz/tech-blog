@@ -1,3 +1,4 @@
 node_modules
 .env
 instructions
+.DS_Store
